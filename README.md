@@ -28,6 +28,8 @@ To make our model more accurate, more data need to feed. We finally used data of
 ## 3.	 Continuous Wavelet Transform (CWT)
 After grabbing data from polygon.io, we calculate the return of each point using the formula (T1rate-T0rate)/T0rate. For example, if the rate yesterday is $0.1 and today is $0.2, it’s return is 100% ((0.2-0.1)/0.1), and if the rate yesterday is $0.2 and today is $0.1, it’s return is cut to -50% ((0.1-0.2)/0.2). 
 From this example, we could see a problem exists: though the price change is similar, there’s a huge difference in the return rate. We don’t want these things to happen to distract our model, so we need to deduct noise in our return date. 
+
+![](./images/equation.png)
  
 CWT (Continuous Wavelet Transform) to noise reduction. The wavelet transform uses a wavelet base to describe the signal, which is a signal with a very small time scale, so the wavelet transform can describe time. In our project, we used CWT to deal with our return data.
 
@@ -36,6 +38,7 @@ CWT (Continuous Wavelet Transform) to noise reduction. The wavelet transform use
 Clustering is progress in finding similarities between data according to the characteristics found in the data and grouping similar data objects into clusters. Clustering has below characters: 
 - high intra-class similarity (data points in the same cluster should be similar) 
 - low inter-class similarity (data points in the different clusters should be dissimilar) 
+
 Different from classification, clustering doesn't label a piece of data beforehand. Clustering is unsupervised learning, while classification is supervised learning. A good clustering method will produce high-quality clusters. Our idea is to cluster the return in 3 clusters:  
 1.	Buy cluster: when the return rate is positive. 
 2.	Sell cluster: when the return rate is negative. 
@@ -58,7 +61,7 @@ We also use soft instead of hard to determine the cluster of each new time point
 
 ## 6.	Return Analysis & Decision Making
 Finally, we use the real-time data to test our model’s performance on the real FX market in real-time. We assume we have a $10,000 cash pool, at each time point we open a position of $1,000, and at the next time point, we closeout. We traded a total of ten lots, the performance of our model is as below:
-####
+![](./images/results.png)
 
 ## 7.	Conclusion
 In general, Logistic Regression could be used to generate a better return for most currency pairs. But multiple models could be used to achieve the best return for specific currency pair
