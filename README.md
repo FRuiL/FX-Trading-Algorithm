@@ -40,9 +40,9 @@ Clustering is progress in finding similarities between data according to the cha
 - low inter-class similarity (data points in the different clusters should be dissimilar) 
 
 Different from classification, clustering doesn't label a piece of data beforehand. Clustering is unsupervised learning, while classification is supervised learning. A good clustering method will produce high-quality clusters. Our idea is to cluster the return in 3 clusters:  
-1.	Buy cluster: when the return rate is positive. 
-2.	Sell cluster: when the return rate is negative. 
-3.	Do nothing cluster: when the return rate is close to 0. 
+-	Buy cluster: when the return rate is positive. 
+-	Sell cluster: when the return rate is negative. 
+-	Do nothing cluster: when the return rate is close to 0. 
 
 After we got the clusters, we calculate each cluster’s basic statistics: (1) average return for each cluster, (2) standard deviation, and (3) average time duration. We use these basic statistics to determine whether this cluster should be a buy cluster, sell cluster or do noting cluster, and to see how risky this cluster is. If a cluster’s average return is negative, it’ll be a sell cluster, if it’s positive, it’ll be a buy cluster. And if it’s near 0, this is a do-nothing cluster.
 ### (2) Model Training
